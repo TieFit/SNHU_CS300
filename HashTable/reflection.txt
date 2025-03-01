@@ -1,0 +1,13 @@
+The purpose of this code is to utilize a hash table to store and manage bids read from a CSV file. The hash table uses chaining via a linked list to handle collisions and sort through
+bids contained within the hash table. It also contains basic functionalities such as: 
+1. loading bids 
+2. displaying bids 
+3. finding a bid
+4. removing a bid
+
+Throughout this assignment I did not encounter many challenges except for when it came to the search and remove functions. The primary issue I was encountering during this was deleted
+bids persisting afterwards. To be precise, if I deleted a bid and then searched for the deleted bid, it should not appear. However, the bid would still appear, alongside with an output 
+message saying it was deleted. However, it's certainly not deleted if any information of the bid is being displayed. To prevent this I added some extra steps to my remove function. 
+Firstly, I flagged the current node as deleted using current->deleted = true. I also set the current key as being empty using current->key = UINT_MAX. By doing this I could then 
+add conditional statements in the search function to check for the status of these values. If current->deleted == true or current->key = UINT_MAX, it would then output a message saying
+which value was detected as such and end the function before other information could be output. 

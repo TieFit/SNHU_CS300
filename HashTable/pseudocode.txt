@@ -1,0 +1,145 @@
+// struct that defines bid data
+STRUCT Bid {
+    bidId
+    title
+    fund
+    amount
+    Constructor:
+        amount = 0.0
+}
+
+// struct to define a node in the hash table
+STRUCT Node {
+    bid
+    key
+    next
+    deleted
+    Constructor:
+        key = UINT_MAX
+        next = NULL
+
+        // sets this default value as false, it is used later on in the remove/search functions
+        deleted = false
+
+    Constructor with bid:
+        bid = provided_bid
+        key = calculated_key
+
+    Constructor with bid and key:
+        bid = provided_bid
+        key = provided_key
+}
+
+CLASS HashTable {
+    nodes = List of Nodes of size DEFAULT_SIZE
+    tableSize = DEFAULT_SIZE
+
+    // function to calculate the hash value for a key
+    FUNCTION hash(key) {
+        RETURN key % tableSize
+    }
+
+    // function to insert bids
+    FUNCTION Insert(bid) {
+        key = hash(stoi(bid.bidId))
+        Node newNode = create Node with bid and key
+        IF nodes[key].key is UINT_MAX {
+            nodes[key] = newNode
+        }
+        ELSE {
+            Traverse list at nodes[key] and append newNode
+        }
+    }
+
+    // function to print all bids
+    FUNCTION PrintAll() {
+        FOR each node in nodes:
+            Traverse linked list at node
+            PRINT node details (key, bidId, title, amount, fund)
+    }
+
+    // function to remove a bid
+    FUNCTION Remove(bidId) {
+        key = hash(stoi(bidId))
+        current = nodes[key]
+
+        IF current.key == UINT_MAX {
+            PRINT "No bid found"
+            RETURN
+        }
+
+        IF current.bidId == bidId {
+            current.deleted = true
+            current.key = UINT_MAX
+            PRINT "Bid has been deleted"
+        }
+
+        ELSE {
+            Traverse linked list, find and remove the bid
+        }
+    }
+
+    // function to search for a specified bidId
+    FUNCTION Search(bidId) {
+        key = hash(stoi(bidId))
+        current = nodes[key]
+
+        // check if current key is equal to UINT MAX, deleted bids are assigned this value
+        IF current.key == UINT_MAX {
+            PRINT "No bid found"
+            RETURN empty Bid
+        }
+
+        // loop over the linked list seraching for a matching bid
+        WHILE current != NULL {
+            IF current.bidId == bidId {
+                IF current.deleted {
+                    PRINT "Bid has been deleted"
+                }
+                ELSE {
+                    PRINT current.bid details
+                    RETURN current.bid
+                }
+            }
+            // move to next node in the list to continue searching
+            current = current.next
+        }
+    }
+}
+FUNCTION strToDouble(str, ch) {
+    REMOVE ch from str
+    RETURN str as double
+}
+
+FUNCTION displayBid(bid) {
+    PRINT bid details (bidId, title, amount, fund)
+}
+
+FUNCTION loadBids(csvPath, hashTable) {
+    PARSE CSV file from csvPath
+    FOR each row in CSV {
+        CREATE Bid from row
+        INSERT Bid into hashTable
+    }
+}
+
+MAIN {
+    PROCESS command-line arguments
+    CREATE HashTable bidTable
+
+    WHILE user choice != 9 {
+        DISPLAY menu
+        GET user choice
+        SWITCH choice:
+            CASE 1:
+                LOAD bids from CSV file
+            CASE 2:
+                PRINT all bids
+            CASE 3:
+                SEARCH and display bid
+            CASE 4:
+                REMOVE bid
+            CASE 9:
+                EXIT
+    }
+}
