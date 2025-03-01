@@ -1,0 +1,10 @@
+The code's purpose is to manage bid objects through the usage of a binary search tree. Bid objects are parsed from a csv file and then translated into a BST where they can be 
+loaded, displayed, removed and new ones can be added. By utilizing a binary search tree for this, the bid objects are able to be managed efficiently.
+
+Throughout this assignment I honestly did not face many challenges. The pre-existing instructions in the starter code were thorough to the point of it taking most of the thought out
+of planning what to write. One challenge I did encounter however was getting the CSV file to load and display properly. At this point I honestly have no idea why I have been struggling
+with the same thing so much. I have faced this same issue throughout the previous assignments as well. What is especially confounding is it seems like every assignment I find a different
+way to fix it, and each way never works twice. During last week's assignment, HashTable, I did not need to do a single thing and it worked flawlessly from the start. This time however,
+all I did was delete my project and start a new one. I quite literally kept my exact same files and code, line for line, when creating the new one, and for whatever reason it was fully 
+functional after doing so. So at this point the only logical conclusion is that my computer is sentient and is purposefully messing with me for laughs. In all seriousness though, I
+was able to overcome this challenge and was able to get the program functioning as intended, at the end of the day that matters most.

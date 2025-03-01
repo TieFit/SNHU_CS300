@@ -1,0 +1,195 @@
+FUNCTION BinarySearchTree constructor() {
+    SET root to nullptr
+}
+
+FUNCTION BinarySearchTree destructor() {
+    // Recurse from the root to delete every node
+    CALL deleteNode(root)
+}
+
+FUNCTION deleteNode(node) {
+    IF node is not nullptr {
+        // Recursively delete left subtree
+        CALL deleteNode(node.left)
+
+        // Recursively delete right subtree
+        CALL deleteNode(node.right)
+
+        DELETE node
+    }
+}
+
+FUNCTION InOrder() {
+    CALL inOrder(root)
+}
+
+FUNCTION inOrder(node) {
+    IF node is not nullptr {
+        // Recursively traverse the left subtree
+        CALL inOrder(node.left)
+
+        // Output the bid information for the current node
+        CALL displayBid(node.bid)
+
+        // Recursively traverse the right subtree
+        CALL inOrder(node.right)
+    }
+}
+
+FUNCTION PostOrder() {
+    CALL postOrder(root)
+}
+
+FUNCTION postOrder(node) {
+    IF node is not nullptr {
+        // Recursively traverse the left subtree
+        CALL postOrder(node.left)
+
+        // Recursively traverse the right subtree
+        CALL postOrder(node.right)
+
+        // Output the bid information for the current node
+        CALL displayBid(node.bid)
+    }
+}
+
+FUNCTION PreOrder() {
+    CALL preOrder(root)
+}
+
+FUNCTION preOrder(node) {
+    IF node is not nullptr {
+        // Output the bid information for the current node
+        CALL displayBid(node.bid)
+
+        // Recursively traverse the left subtree
+        CALL preOrder(node.left)
+
+        // Recursively traverse the right subtree
+        CALL preOrder(node.right)
+    }
+}
+
+FUNCTION Insert(bid) {
+    // If root is empty, set the root to a new node with the given bid
+    IF root is nullptr {
+        CREATE new node with bid
+        SET root to the new node
+    }
+
+    ELSE {
+        CALL addNode(root,bid)
+    }
+}
+
+FUNCTION addNode(node, bid) {
+    // if bidId is smaller, insert into left subtree
+    IF bid.bidId < node.bid.bidId {
+        // If the left child is empty, create a new node and set it as the left child
+        IF node.left is nullptr {
+            CREATE new node with bid
+            SET node.left to new node
+        }
+
+        ELSE {
+            // recurse down left subtree
+            CALL addNode(node.left, bid)
+        }
+    }
+
+    ELSE {
+        // If the bidId is larger or equal, insert into the right subtree
+        IF node.right is nullptr {
+            // If the right child is empty, create a new node and set it as the right child
+            CREATE new node with bid
+            SET node.right to the new node
+        }
+
+        ELSE {
+            // recurse down right subtree
+            CALL addNode(node.right, bid)
+        }
+    }
+}
+
+FUNCTION Remove(bidId) {
+    root = CALL removeNode(root, bidId)
+}
+
+FUNCTION removeNode(node, bidId) {
+    IF node is nullptr {
+        RETURN node
+    }
+
+    // If bidId is smaller, recurse down the left subtree
+    IF bidId < node.bid.bidId {
+        node.left = CALL removeNode(node.left, bidId)
+    }
+
+    // If bidId is larger, recurse down the right subtree
+    ELSE IF bidId > node.bid.bidId {
+        node.right = CALL removeNode(node.right, bidId)
+    }
+
+    // If bidId matches the current node's bidId, the node must be removed
+    ELSE {
+
+        // node is a leaf
+        IF node.left is nullptr AND node.right is nullptr {
+            DELETE node
+            RETURN nullptr
+        }
+
+        // node has one child
+        ELSE IF node.left is nullptr {
+            temp = node.right
+            DELETE node
+            RETURN temp
+        }
+
+        // node has one child
+        ELSE IF node.right is nullptr {
+            temp = node.left
+            DELETE node 
+            RETURN temp
+        }
+
+        ELSE {
+            temp = CALL minNode(node.right)
+
+            node.bid = temp.bid
+
+            node.right = CALL removeNode(node.right, temp.bid.bidId)
+        }
+    }
+
+    RETURN node
+}
+
+FUNCTION Search(bidId) {
+    current = root
+
+    // loop until bottom of tree or until bidId is found
+    WHILE current is not nullptr {
+        IF bidId is current.bid.bidId {
+            RETURN current bid
+        }
+
+        // if bid is smaller than current node then traverse left
+        // else larger so traverse right
+        current = (bidId < current.bid.bidId) ? current.left : current.right;
+    }
+
+    // if bid not found, create and return empty bid
+    CREATE emptyBid
+    RETURN emptyBid
+}
+
+FUNCTION minNode(node) {
+    //traverse left until leftmost node is found
+    WHILE node is not nullptr AND node.left is not nullptr {
+        node = node.left
+    }
+    // return leftmost, (minimum) node
+    RETURN node
+}
