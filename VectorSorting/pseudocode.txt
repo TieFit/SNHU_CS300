@@ -1,0 +1,55 @@
+FUNCTION Partition(bids, begin, end):
+    SET low = begin
+    SET high = end
+
+    Calculate midpoint as (begin + end) / 2
+    SETt pivot to bids[midpoint]
+
+    SET done = false
+
+    WHILE done is false:
+        WHILE bids[low].title < pivot.title:
+            INCREMENT low by 1
+
+        WHILE pivot.title < bids[high].title:
+            DECREMENT high by 1
+
+        IF low >= high:
+            SET done to true
+        ELSE:
+            Swap bids[low] and bids[high]
+            INCREMENT low by 1
+            DECREMENT high by 1
+
+    RETURN high
+
+--------------------------------------------------------------------------------------
+
+FUNCTION quickSort(bids, begin, end): 
+    IF begin >= end:
+        RETURN
+    
+    SET mid to partition(bids, begin, end)
+
+    SORT left partition (begin to mid)
+    quickSort(bids, begin, mid)
+
+    SORT right partition (mid + 1 to end)
+    quickSort(bids, mid + 1, end)
+
+    -----------------------------------------------------------------------------------------
+
+FUNCTION SelectionSort(bids):
+    SET largest to the size of bids
+
+    FOR place from 0 to largest - 1:
+        SET smallest to place
+
+        FOR j from place + 1 to largest:
+            IF bids[j].title < bids[smallest].title:
+                SET smallest to j
+
+        IF smallest != place:
+            SWAP bids[place] and bids[smallest]
+
+-----------------------------------------------------------------------------------------------

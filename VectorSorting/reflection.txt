@@ -1,0 +1,11 @@
+The purpose of this code is to read bids from a csv file and then sort them. This is done through the use of a UI where the user must first load the file, and then they are able 
+to sort it. In this project there are two sort methods that are implemented to accomplish this task. The first is selection sort, which finds the smallest element and swaps it to the
+front until everything has been sorted. This process will accomplish its task, but it is not nearly as fast as the other method that is employed in this code. Quicksort works by 
+partitioning the data at a pivot point and then recursively sorts the smaller and larger partitions. This enables quicksort to have a much higher performance when compared to selection
+sort. 
+
+The biggest challenge I had when beginning this assignment is that I did not understand what the template code did whatsoever. To tackle this issue, I did not even write a single line
+of code before taking the time to read through the various files and comments to understand what they were doing. After this I confirmed that the choices 1 and 2 were working as they were
+pre-built and also because both sort options rely on choice 1 to be functional. The nastiest issues I encountered though were syntax errors. None that would make the console flag an error,
+but instead ones such as spacing that would cause issues. For example, one mistake I made was accidentally nesting a conditional statement into a loop, when it was supposed to be outside 
+of the loop. I was able to fix this after identifying which sort was not working and painstakingly reviewing what I had written to identify my mistake. 
