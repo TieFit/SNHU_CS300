@@ -1,5 +1,5 @@
 1. What was the problem you were solving in the projects for this course?
-  The primary problem solved during this course was utilizing various data strcutures to properly handle and store data read from a CSV file. 
+  The primary problem solved during this course was utilizing various data structures to properly handle and store data read from a CSV file. 
 
    
 2. How did you approach the problem? Consider why data structures are important to understand.
