@@ -1,0 +1,12 @@
+The purpose of this code is to parse data from a csv file and then be able to manage it using a linked list. Basic functions are that you may enter new bids, load bids, display all bids,
+find a certain bid, and also remove individual bids. Each of these individual actions are accomplished through the use of a function. In addition, these functions also pull information
+from various classes. There are three classes in this program. The bid class, which focuses on information directly related to bids such as the amount, fund, id and title. The bidHandler
+class focuses on handling bids. It focuses on creating methods to retrieve, load and update bids. The final class is the LinkedList class which handles the bids in a a linked list structure.
+This class enables  the core functionality of adding bids, displayhing bids, removing bids and searching for bids. 
+
+The greatest challenge I faced when completing this assignment was getting the menu to work. The code I had written for the FixMe sections was mostly correct. However, when I went to
+begin testing it through using the menu I noticed a particular issue. When selecting option 2 to load bids, it would say that 0 bids would load. All code related to loading bids was 
+pre-written so I did not fully understand how it worked. After confirming that I did indeed have the csv file's path formatted properly I decided to go after the next culprit which would
+be how the code outside of what I had to write interacts with itself. Firstly, I created the Bid and BidHandler classes as it made the program easier for me to understand by making it neatly
+organized and connected in a logical way. I then took code that was pre-written and changed it or removed it so it would work in the context of classes. As most of the code beforehand
+was only written as functions that are called in various parts of the program. After making changes where I saw fit I was able to resolve this issue and make the program functional. 

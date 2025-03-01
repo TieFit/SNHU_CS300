@@ -1,0 +1,237 @@
+---------------------------------------------------------------------------------------------------------
+classes.hpp file
+
+CLASS Bid:
+    
+    // Constructor to initialize the Bid object
+    METHOD Bid():
+        Initialize bidId as an empty string
+        Initialize title as an empty string
+        Initialize fund as an empty string
+        Initialize amount as 0.0
+    
+    // Get the amount of the bid
+    METHOD getAmount() RETURNS double:
+        RETURN amount
+    
+    // Set the amount of the bid
+    METHOD setAmount(amount: double):
+        Set the amount to the provided value
+    
+    // Get the bid ID
+    METHOD getBidId() RETURNS string:
+        RETURN bidId
+    
+    // Set the bid ID
+    METHOD setBidId(bidId: string):
+        Set the bidId to the provided value
+    
+    // Get the fund associated with the bid
+    METHOD getFund() RETURNS string:
+        RETURN fund
+    
+    // Set the fund associated with the bid
+    METHOD setFund(fund: string):
+        Set the fund to the provided value
+    
+    // Get the title of the bid
+    METHOD getTitle() RETURNS string:
+        RETURN title
+    
+    // Set the title of the bid
+    METHOD setTitle(title: string):
+        Set the title to the provided value
+    
+    // Display the bid details (e.g., printing to the console)
+    METHOD display():
+        Print bidId, title, fund, and amount
+
+    // Private attributes of the Bid class
+    ATTRIBUTE bidId: string
+    ATTRIBUTE title: string
+    ATTRIBUTE fund: string
+    ATTRIBUTE amount: double
+
+
+CLASS BidHandler:
+
+    // Get the current bid 
+    METHOD getBid() RETURNS Bid:
+        RETURN a Bid object
+
+    // Load bids from a CSV file located at csvPath
+    METHOD loadBids(csvPath: string):
+        Parse the CSV file at the given path and load the bids into the list
+    
+    // Get the list of bids
+    METHOD getBids() RETURNS LinkedList:
+        RETURN the list of bids (as a constant reference)
+
+    // Set the list of bids
+    METHOD setBids(bids: LinkedList):
+        Update the internal list of bids with the provided list
+
+    // Private attributes
+    ATTRIBUTE bids: LinkedList
+
+CLASS LinkedList:
+
+    // Constructor to initialize the linked list
+    METHOD LinkedList():
+        Initialize head as null
+        Initialize tail as null
+        Initialize size as 0
+
+    // Destructor to clean up resources when the linked list is destroyed
+    METHOD ~LinkedList():
+        Perform cleanup to free any dynamically allocated memory (nodes)
+
+    // Append a bid to the end of the list
+    METHOD Append(bid: Bid):
+        Create a new Node with the provided bid
+        If the list is empty:
+            Set head and tail to the new node
+        Else:
+            Add the new node to the end of the list and update the tail
+        Increment size by 1
+
+    // Prepend a bid to the beginning of the list
+    METHOD Prepend(bid: Bid):
+        Create a new Node with the provided bid
+        If the list is empty:
+            Set head and tail to the new node
+        Else:
+            Set the new node's next to the current head, and then set the head to the new node
+        Increment size by 1
+
+    // Print all bids in the list
+    METHOD PrintList():
+        Start from head and iterate through the list, printing each bid's details
+
+    // Remove a bid from the list using its bidId
+    METHOD Remove(bidId: string):
+        Search for the node with the specified bidId
+        If found:
+            Remove the node from the list and update links between nodes
+            Decrement size by 1
+
+    // Search for a bid by its bidId
+    METHOD Search(bidId: string) RETURNS Bid:
+        Iterate through the list, returning the bid if a match is found
+        If not found, return a default or null Bid
+
+    // Get the number of bids in the list
+    METHOD Size() RETURNS int:
+        RETURN the size of the list
+
+    // Private helper method to check if a bidId exists in the list
+    METHOD keyExists(key: string) RETURNS bool:
+        Iterate through the list to check if a bid with the given bidId exists
+        RETURN true if found, false otherwise
+
+    // Internal Node structure for each element in the list
+    STRUCT Node:
+        ATTRIBUTE bid: Bid
+        ATTRIBUTE next: Node (pointer to the next node)
+
+        // Default constructor for Node
+        METHOD Node():
+            Set next to null
+
+        // Constructor to initialize Node with a given Bid
+        METHOD Node(aBid: Bid):
+            Set bid to aBid
+            Set next to null
+
+    // Private attributes for the linked list
+    ATTRIBUTE head: Node (pointer to the first node in the list)
+    ATTRIBUTE tail: Node (pointer to the last node in the list)
+    ATTRIBUTE size: int (number of nodes in the list)
+
+
+---------------------------------------------------------------------------------------------------------
+
+LinkedList.cpp file
+
+METHOD Append(bid: Bid):
+    IF keyExists(bid.getBidId()) is true:
+        PRINT "Duplicate bidId, try another bid"
+        RETURN
+
+    CREATE new_node with bid
+
+    IF head is null:
+        SET head = new_node
+        SET tail = new_node
+    ELSE:
+        SET tail.next = new_node
+        SET tail = new_node
+
+    INCREMENT size by 1
+END METHOD
+
+METHOD Prepend(bid: Bid):
+    IF keyExists(bid.getBidId()) is true:
+        PRINT "Duplicate bidId, try another bid"
+        RETURN
+
+    CREATE new_node with bid
+
+    IF head is not null:
+        SET new_node.next = head
+    SET head = new_node
+
+    INCREMENT size by 1
+END METHOD
+
+METHOD PrintList:
+    SET current = head
+    WHILE current is not null:
+        CALL current.bid.display()
+        SET current = current.next
+END METHOD
+
+METHOD Remove(bidId: string):
+    IF head.bid.getBidId() == bidId:
+        SET head = head.next
+        DECREMENT size by 1
+        PRINT bidId + " removed."
+        RETURN
+
+    SET current = head
+    WHILE current is not null:
+        IF current.next.bid.getBidId() == bidId:
+            SET temp = current.next
+            SET current.next = current.next.next
+            DELETE temp
+            DECREMENT size by 1
+            PRINT bidId + " removed."
+            RETURN
+        SET current = current.next
+
+    PRINT bidId + " not found."
+END METHOD
+
+METHOD Search(bidId: string) RETURNS Bid:
+    IF head.bid.getBidId() == bidId:
+        RETURN head.bid
+
+    SET current = head
+    WHILE current is not null:
+        IF current.bid.getBidId() == bidId:
+            RETURN current.bid
+        SET current = current.next
+
+    CREATE an empty Bid
+    RETURN empty Bid
+END METHOD
+
+METHOD keyExists(key: string) RETURNS bool:
+    SET current = head
+    FOR i FROM 0 to size:
+        IF current.bid.getBidId() == key:
+            RETURN true
+        SET current = current.next
+    RETURN false
+END METHOD
+
