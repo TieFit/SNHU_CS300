@@ -1,0 +1,135 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\BinarySearchTree\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\FinalProject\\ProjectTwo.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\VectorSorting\\VectorSorting.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\LinkedList\\LinkedList.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\HashTable\\HashTable.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\BinarySearchTree\\BinarySearchTree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:BinarySearchTree.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\BinarySearchTree\\CSVparser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CSVparser.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\BinarySearchTree\\CSVparser.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CSVparser.hpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "BinarySearchTree.cpp",
+              "DocumentMoniker": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\BinarySearchTree\\BinarySearchTree.cpp",
+              "RelativeDocumentMoniker": "BinarySearchTree.cpp",
+              "ToolTip": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\BinarySearchTree\\BinarySearchTree.cpp",
+              "RelativeToolTip": "BinarySearchTree.cpp",
+              "ViewState": "AgIAAPwAAAAAAAAAAAAAAK8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-09T23:42:25.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HashTable.cpp",
+              "DocumentMoniker": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\HashTable\\HashTable.cpp",
+              "RelativeDocumentMoniker": "..\\HashTable\\HashTable.cpp",
+              "ToolTip": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\HashTable\\HashTable.cpp",
+              "RelativeToolTip": "..\\HashTable\\HashTable.cpp",
+              "ViewState": "AgIAAIcBAAAAAAAAAAAAAGUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-09T23:43:42.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LinkedList.cpp",
+              "DocumentMoniker": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\LinkedList\\LinkedList.cpp",
+              "RelativeDocumentMoniker": "..\\LinkedList\\LinkedList.cpp",
+              "ToolTip": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\LinkedList\\LinkedList.cpp",
+              "RelativeToolTip": "..\\LinkedList\\LinkedList.cpp",
+              "ViewState": "AgIAAH0BAAAAAAAAAAAAAJMAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-09T23:43:55.809Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "VectorSorting.cpp",
+              "DocumentMoniker": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\VectorSorting\\VectorSorting.cpp",
+              "RelativeDocumentMoniker": "..\\VectorSorting\\VectorSorting.cpp",
+              "ToolTip": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\VectorSorting\\VectorSorting.cpp",
+              "RelativeToolTip": "..\\VectorSorting\\VectorSorting.cpp",
+              "ViewState": "AgIAAOIAAAAAAAAAAAAAAFEBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-09T23:44:00.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProjectTwo.cpp",
+              "DocumentMoniker": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\FinalProject\\ProjectTwo.cpp",
+              "RelativeDocumentMoniker": "..\\FinalProject\\ProjectTwo.cpp",
+              "ToolTip": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\FinalProject\\ProjectTwo.cpp",
+              "RelativeToolTip": "..\\FinalProject\\ProjectTwo.cpp",
+              "ViewState": "AgIAAGkAAAAAAAAAAAAAAGcAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-09T23:42:54.821Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CSVparser.cpp",
+              "DocumentMoniker": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\BinarySearchTree\\CSVparser.cpp",
+              "RelativeDocumentMoniker": "CSVparser.cpp",
+              "ToolTip": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\BinarySearchTree\\CSVparser.cpp",
+              "RelativeToolTip": "CSVparser.cpp",
+              "ViewState": "AgIAAN4AAAAAAAAAAAAAAAwBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-11-09T23:42:30.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CSVparser.hpp",
+              "DocumentMoniker": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\BinarySearchTree\\CSVparser.hpp",
+              "RelativeDocumentMoniker": "CSVparser.hpp",
+              "ToolTip": "C:\\Users\\jonat\\OneDrive\\Documents\\college_coding\\cs300\\BinarySearchTree\\CSVparser.hpp",
+              "RelativeToolTip": "CSVparser.hpp",
+              "ViewState": "AgIAAEEAAAAAAAAAAAAAAGMAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-11-09T23:42:35.044Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

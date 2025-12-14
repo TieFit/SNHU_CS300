@@ -8,7 +8,8 @@
 
 #include <iostream>
 #include <time.h>
-
+#include <algorithm>
+#include <cstdlib>
 #include "CSVparser.hpp"
 
 using namespace std;
@@ -44,7 +45,7 @@ struct Node {
     }
 
     // initialize with a bid
-    Node(Bid aBid) :
+    Node(const Bid& aBid) :
         Node() {
         bid = aBid;
     }
@@ -54,16 +55,12 @@ struct Node {
 // Binary Search Tree class definition
 //============================================================================
 
-/**
- * Define a class containing data members and methods to
- * implement a binary search tree
- */
 class BinarySearchTree {
 
 private:
     Node* root;
 
-    void addNode(Node* node, Bid bid);
+    void addNode(Node* node, const Bid& bid);
     void inOrder(Node* node);
     void postOrder(Node* node);
     void preOrder(Node* node);
@@ -77,26 +74,18 @@ public:
     void InOrder();
     void PostOrder();
     void PreOrder();
-    void Insert(Bid bid);
-    void Remove(string bidId);
-    Bid Search(string bidId);
+    void Insert(const Bid& bid);
+    void Remove(const string& bidId);
+    Bid Search(const string& bidId);
 };
 
-/**
- * Default constructor
- */
+// default constructor
 BinarySearchTree::BinarySearchTree() {
-    // FixMe (1): initialize housekeeping variables
-    //root is equal to nullptr
     root = nullptr;
 }
 
-/**
- * Destructor
- */
+// destructor
 BinarySearchTree::~BinarySearchTree() {
-    //FixMe (2)
-    // recurse from root deleting every node
     deleteNode(root);
 }
 
@@ -111,23 +100,17 @@ void BinarySearchTree::deleteNode(Node* node) {
     }
 }
 
-/**
- * Traverse the tree in order
- */
+// traverse tree in order
 void BinarySearchTree::InOrder() {
-    // FixMe (3a): In order root
-    // call inOrder fuction and pass root
     inOrder(root);
 }
 
 void BinarySearchTree::inOrder(Node* node) {
-    // FixMe (3b): Pre order root
-    //if node is not equal to null ptr
     if (node != nullptr) {
         // traverse left subtree
         inOrder(node->left);
 
-        //output bidID, title, amount, fund
+        // display bidID, title, amount, fund
         displayBid(node->bid);
 
         // traverse right subtree
@@ -135,18 +118,12 @@ void BinarySearchTree::inOrder(Node* node) {
     }
 }
 
-/**
- * Traverse the tree in post-order
- */
+// traverse tree in post order
 void BinarySearchTree::PostOrder() {
-    // FixMe (4a): Post order root
-    // postOrder root
     postOrder(root);
 }
 
 void BinarySearchTree::postOrder(Node* node) {
-    // FixMe (4b): Pre order root
-    //if node is not equal to null ptr
     if (node != nullptr) {
         // traverse left subtree
         postOrder(node->left);
@@ -154,27 +131,20 @@ void BinarySearchTree::postOrder(Node* node) {
         // traverse right subtree
         postOrder(node->right);
 
-        //output bidID, title, amount, fund
+        // display bidID, title, amount, fund
         displayBid(node->bid);
 
     }
 }
 
-/**
- * Traverse the tree in pre-order
- */
+// traverse tree in pre order
 void BinarySearchTree::PreOrder() {
-    // FixMe (5a): Pre order root
-    // preOrder root
     preOrder(root);
 }
 
 void BinarySearchTree::preOrder(Node* node) {
-    // FixMe (5b): Pre order root
-    //if node is not equal to null ptr
     if (node != nullptr) {
-
-        //output bidID, title, amount, fund
+        // display bidID, title, amount, fund
         displayBid(node->bid);
 
         // traverse left subtree
@@ -187,27 +157,19 @@ void BinarySearchTree::preOrder(Node* node) {
 
 
 
-/**
- * Insert a bid
- */
-void BinarySearchTree::Insert(Bid bid) {
-    // FIXME (6a) Implement inserting a bid into the tree
-    // if root equal to null ptr
+// inserting a bid
+void BinarySearchTree::Insert(const Bid& bid) {
     if (root == nullptr) {
-        // root is equal to new node bid
         root = new Node(bid);
     }
-
     else {
         // insert bid into the tree, starting from the root
         addNode(root, bid);
     }
-
 }
 
-void BinarySearchTree::addNode(Node* node, Bid bid) {
-    // FIXME (6b) Implement inserting a bid into the tree
-    // if node is larger then add to left
+void BinarySearchTree::addNode(Node* node, const Bid& bid) {
+    // if node is larger, then add to left
     if (bid.bidId < node->bid.bidId) {
 
         // If bidId is smaller, insert into the left subtree
@@ -223,7 +185,6 @@ void BinarySearchTree::addNode(Node* node, Bid bid) {
         }
     }
 
-    
     else {
         // If bidId is larger or equal, insert into the right subtree
         if (node->right == nullptr) {
@@ -239,46 +200,37 @@ void BinarySearchTree::addNode(Node* node, Bid bid) {
     }
 }
 
-/**
- * Remove a bid
- */
-void BinarySearchTree::Remove(string bidId) {
-    // FIXME (7a) Implement removing a bid from the tree
-    // remove node root bidID
+// removing a bid
+void BinarySearchTree::Remove(const string& bidId) {
     root = removeNode(root, bidId);
 }
 
-/**
- * Remove a bid from some node (recursive)
- */
-Node* BinarySearchTree::removeNode(Node* node, string bidId) {
-    // FIXME (7b) Implement removing a bid from the tree
-    // if node = nullptr return node
+
+// recursively remove a bid from a node
+Node* BinarySearchTree::removeNode(Node* node, const string& bidId) {
     if (node == nullptr) {
         return node;
     }
-
-    // (otherwise recurse down the left subtree)
+    // recurse down the left subtree
     if (bidId < node->bid.bidId) {
-        // check for match and if so, remove left node using recursive call 
+        // check for match and if equal, remove left node using recursive call 
         node->left = removeNode(node->left, bidId);
     }
 
-    // (otherwise recurse down the right subtree)
+    // recurse down the right subtree
     else if (bidId > node->bid.bidId) {
-        // check for match and if so, remove right node using recursive call
+        // check for match and if equal, remove right node using recursive call
         node->right = removeNode(node->right, bidId);
     }
 
-    // (otherwise no children so node is a leaf node)
+    // else, no children so node is a leaf node
     else {
-        // if left node = nullptr && right node = nullptr delete node 
         if (node->left == nullptr && node->right == nullptr) {
             delete node;  // Node is a leaf, delete it
             return nullptr;
         }
 
-        // (otherwise check one child to the left)
+        // check one child to the left
         else if (node->left == nullptr) {
             Node* temp = node->right;
             delete node;  // Node has only right child
@@ -300,18 +252,11 @@ Node* BinarySearchTree::removeNode(Node* node, string bidId) {
             node->right = removeNode(node->right, temp->bid.bidId);
         }
     }
-
-    // return node
     return node;
-
 }
 
-/**
- * Search for a bid
- */
+// search for bid
 Bid BinarySearchTree::Search(string bidId) {
-    // FIXME (8) Implement searching the tree for a bid
-    // set current node equal to root
     Node* current = root;
 
     // keep looping downwards until bottom reached or matching bidId found
@@ -339,25 +284,14 @@ Node* BinarySearchTree::minNode(Node* node) {
     return node;
 }
 
-/**
- * Add a bid to some node (recursive)
- *
- * @param node Current node in tree
- * @param bid Bid to be added
- */
-
 //============================================================================
 // Static methods used for testing
 //============================================================================
 
-/**
- * Display the bid information to the console (std::out)
- *
- * @param bid struct containing the bid info
- */
-void displayBid(Bid bid) {
+// function to display bid information
+void displayBid(const Bid& bid) {
     cout << bid.bidId << ": " << bid.title << " | " << bid.amount << " | "
-        << bid.fund << endl;
+        << bid.fund << '\n';
     return;
 }
 
@@ -367,18 +301,18 @@ void displayBid(Bid bid) {
  * @param csvPath the path to the CSV file to load
  * @return a container holding all the bids read
  */
+// load a CSV file containing bids into a container, csvPath being the filepath for the CSV
 void loadBids(string csvPath, BinarySearchTree* bst) {
     cout << "Loading CSV file " << csvPath << endl;
 
-    // initialize the CSV Parser using the given path
     csv::Parser file = csv::Parser(csvPath);
 
-    // read and display header row - optional
+    // read and display header row 
     vector<string> header = file.getHeader();
     for (auto const& c : header) {
         cout << c << " | ";
     }
-    cout << "" << endl;
+    cout << '\n';
 
     try {
         // loop to read rows of a CSV file
@@ -402,22 +336,13 @@ void loadBids(string csvPath, BinarySearchTree* bst) {
     }
 }
 
-/**
- * Simple C function to convert a string to a double
- * after stripping out unwanted char
- *
- * credit: http://stackoverflow.com/a/24875936
- *
- * @param ch The character to strip out
- */
+// C function to convert a string to a double after stripping out unwanted char
+// credit: http://stackoverflow.com/a/24875936: 
 double strToDouble(string str, char ch) {
     str.erase(remove(str.begin(), str.end(), ch), str.end());
     return atof(str.c_str());
 }
 
-/**
- * The one and only main() method
- */
 int main(int argc, char* argv[]) {
 
     // process command line arguments
@@ -459,17 +384,15 @@ int main(int argc, char* argv[]) {
         switch (choice) {
 
         case 1:
-
             // Initialize a timer variable before loading bids
             ticks = clock();
 
-            // Complete the method call to load the bids
             loadBids(csvPath, bst);
 
             //cout << bst->Size() << " bids read" << endl;
 
             // Calculate elapsed time and display result
-            ticks = clock() - ticks; // current clock ticks minus starting clock ticks
+            ticks = clock() - ticks; 
             cout << "time: " << ticks << " clock ticks" << endl;
             cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
             break;
@@ -480,10 +403,8 @@ int main(int argc, char* argv[]) {
 
         case 3:
             ticks = clock();
-
             bid = bst->Search(bidKey);
-
-            ticks = clock() - ticks; // current clock ticks minus starting clock ticks
+            ticks = clock() - ticks;
 
             if (!bid.bidId.empty()) {
                 displayBid(bid);
@@ -494,7 +415,6 @@ int main(int argc, char* argv[]) {
 
             cout << "time: " << ticks << " clock ticks" << endl;
             cout << "time: " << ticks * 1.0 / CLOCKS_PER_SEC << " seconds" << endl;
-
             break;
 
         case 4:
@@ -502,8 +422,6 @@ int main(int argc, char* argv[]) {
             break;
         }
     }
-
     cout << "Good bye." << endl;
-
     return 0;
 }
